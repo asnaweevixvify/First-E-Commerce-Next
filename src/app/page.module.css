@@ -36,3 +36,22 @@
     width: 150px;
     background-color: #00BF63;
 }
+.count{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    background-color: #00BF63;
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+.count h1{
+    font-weight: 300;
+    font-size: 25px;
+    cursor: pointer;
+}
