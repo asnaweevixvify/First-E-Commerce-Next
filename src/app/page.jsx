@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <div>
-        <h1 className="textmain">E-Commerce Next.js</h1>
+        <h1 className="textmain">E-Commerce ระบบสั่งซื้อสินค้า</h1>
         <div className={styles.products_container}>
             {data.map((e,index)=>{
               return(

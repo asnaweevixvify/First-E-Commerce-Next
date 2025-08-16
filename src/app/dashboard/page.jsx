@@ -8,7 +8,7 @@ export default function Dashboard() {
         <h1 className='textmain'>Admin Page</h1>
         <div className={styles.but}>
             <Link href="/dashboard/form"><button>เพิ่มสินค้า</button></Link>
-            <Link href="/manage"><button>จัดการสินค้า</button></Link>
+            <Link href="/dashboard/manage"><button>จัดการสินค้า</button></Link>
         </div>
     </div>
   )

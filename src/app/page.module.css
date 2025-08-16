@@ -15,6 +15,7 @@
     object-fit:cover;
     border-radius: 10px;
     margin-bottom: 10px;
+    transition: transform 0.2s ease-in-out;
 }
 .product_box{
     text-align: center;
@@ -23,6 +24,9 @@
     padding: 30px;
     border-radius: 10px;
     border: 6px solid black;
+}
+.product_box img:hover{
+    transform: scale(1.05);
 }
 .product_box button{
     font-size: 17px;
