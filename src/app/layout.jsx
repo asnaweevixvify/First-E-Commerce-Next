@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono,Kanit } from "next/font/google";
 import "./globals.css";
+import Nav from "./navbar/page";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${kanit.className}`}>
+        <Nav/>
         {children}
       </body>
     </html>
