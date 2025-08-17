@@ -15,6 +15,15 @@ export default function Home() {
     setData(res.data)
   }
 
+  const getCart = async()=>{
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API}/cart/getCart`)
+    const inCart = res.data
+    const oldCart = await inCart.map(e=>{
+      return {id:e.id,count:e.count}
+    })
+    setCart(oldCart)
+  }
+
   const addToCart =(id)=>{
     //client
     const newCart = [...cart]
@@ -58,10 +67,26 @@ export default function Home() {
   const decrease=(id)=>{
     const newCart = cart.filter(e=>e !== null).map((e)=>{
       if(e.count === 1 && e.id === id){
+       
+        try {
+          axios.delete(`${process.env.NEXT_PUBLIC_API}/cart/removeCart/${id}`)
+        }
+        catch(err) {
+          console.log(err);
+        }
+
         return null
       }
       else if(e.id === id){
         const newCount = e.count - 1
+
+        try {
+          axios.patch(`${process.env.NEXT_PUBLIC_API}/cart/changeCount/${id}`,{count:newCount})
+        }
+        catch(err) {
+          console.log(err);
+        }
+
         return {id,count:newCount}
       }
       return e
@@ -71,6 +96,7 @@ export default function Home() {
 
   useEffect(()=>{
     getData()
+    getCart()
   },[])
 
   return (
