@@ -27,10 +27,10 @@ model Product {
   url String
 }
 model Cart {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  id    String @id @map("_id") @db.ObjectId
   name  String
   price String 
-  count String
+  count Int
   url String
 }
 model History {

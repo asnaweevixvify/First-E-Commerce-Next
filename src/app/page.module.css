@@ -35,6 +35,7 @@
     font-family: 'kanit';
     width: 150px;
     background-color: #00BF63;
+    cursor: pointer;
 }
 .count{
     display: flex;
@@ -53,5 +54,4 @@
 .count h1{
     font-weight: 300;
     font-size: 25px;
-    cursor: pointer;
 }

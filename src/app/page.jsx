@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import Image from 'next/image'
 import axios from "axios";
 import { useState,useEffect } from "react";
+import { FaPlus,FaMinus } from "react-icons/fa6";
 
 export default function Home() {
   const [data,setData] = useState([])
@@ -15,15 +16,38 @@ export default function Home() {
   }
 
   const addToCart =(id)=>{
+    //client
     const newCart = [...cart]
     newCart.push({id,count:1})
     setCart(newCart)
+    //server
+    const addCart = data.filter(e=>e.id===id)
+    try {
+      axios.post(`${process.env.NEXT_PUBLIC_API}/cart/createCart`,{
+        id,
+        name:addCart[0].name,
+        price:addCart[0].price,
+        count:1,
+        url:addCart[0].url
+      })
+    }
+    catch(err) {
+      console.log(err);
+    }
   }
 
   const increase=(id)=>{
     const newCart = cart.filter(e=>e !== null).map((e)=>{
       if(e.id === id){
         const newCount = e.count + 1
+
+        try {
+          axios.patch(`${process.env.NEXT_PUBLIC_API}/cart/changeCount/${id}`,{count:newCount})
+        }
+        catch(err) {
+          console.log(err);
+        }
+
         return {id,count:newCount}
       }
       return e
@@ -49,10 +73,6 @@ export default function Home() {
     getData()
   },[])
 
-  useEffect(()=>{
-    console.log(cart);
-  },[cart])
-
   return (
     <div>
         <h1 className="textmain">E-Commerce ระบบสั่งซื้อสินค้า</h1>
@@ -67,9 +87,9 @@ export default function Home() {
                     <h4>ราคา : {e.price} บาท</h4>
                     <h5>ยอดคงเหลือ : {e.count}</h5>
                     <div className={styles.count}>
-                        <h1 onClick={()=>decrease(e.id)}>-</h1>
+                        <FaMinus style={{cursor:'pointer'}} onClick={()=>decrease(e.id)} />
                         <h1>{finded.count}</h1>
-                        <h1 onClick={()=>increase(e.id)}>+</h1>
+                        <FaPlus style={{cursor:'pointer'}} onClick={()=>increase(e.id)} />
                     </div>
                   </div>
                 )
