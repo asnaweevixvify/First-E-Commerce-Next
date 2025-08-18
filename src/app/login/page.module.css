@@ -1,0 +1,34 @@
+.login_container form{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    margin-top: 50px;
+    gap: 15px;
+}
+.login_container form p{
+    color: black;
+}
+.login_container form input{
+    height: 40px;
+    background-color: white;
+    color: black;
+}
+.login_container form button{
+    margin-top: 20px;
+    height: 50px;
+    font-family: 'kanit';
+}
+.des{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 25px;
+}
+.des p{
+    color: black;
+}
+.des a p{
+    color: blue;
+}

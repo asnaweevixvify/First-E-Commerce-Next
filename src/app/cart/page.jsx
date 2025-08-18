@@ -104,7 +104,7 @@ export default function Cart() {
 
   return (
    <div>
-        <h1 className="textmain">รถเข็น</h1>
+        <h1 className="textmain">ตะกร้าของคุณ</h1>
         <div className={styles.products_container}>
             {data.map((e,index)=>{
               const finded = cart.find(product=>product.id===e.id)
